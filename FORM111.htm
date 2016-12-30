@@ -3,9 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>MR INVOICE FORM</title>
-<script src="jquery_library1_11.js"></script>
-<script src="jquery_validate.js"></script>
-<script src="script01.js"></script>
 <style type="text/css">
 <!--
 .style4 {
@@ -33,13 +30,13 @@
   <tr>
     <td height="138" colspan="4" valign="middle" bgcolor="#FFFFFF"><div align="left"><img src="SANIFLO_LOGO.PNG" alt="LOGO" width="352" height="134" /></div></td>
     <td width="7" rowspan="6" valign="top"></td>
-    <td colspan="3" rowspan="6" valign="top"><form id="form1" name="form1" method="post" action="">
+    <td colspan="3" rowspan="6" valign="top">
       <label> </label>
 
         <div align="right"><span class="style18">EDITOR</span>
           <textarea name="textarea" maxlength="32">           INVOICE</textarea>
         </div>
-    </form>      <p align="right" class="style13"><span class="style8">15 Swanborough Court<br />
+          <p align="right" class="style13"><span class="style8">15 Swanborough Court<br />
           New Road<br />
           Shoreham-by-Sea<br />
     BN43 6RZ</span> </p></td>
@@ -78,11 +75,11 @@
   <tr>
     <td height="39" colspan="2" bgcolor="#000000"><span class="style4">T: 01273 973032 M: 075 385 812 54 </span></td>
     <td width="87"><span class="style8">Date DD/MM</span></td>
-    <td width="241"><form id="invoice">
+    <td width="241"><form name="invoice" method="POST" action="">
       <label for='Day'></label>
-      <input name="Day" id="Day" size="4">
+      <input name="Day" type="text" size="4" maxlength="2"/>
       <label for='Month'></label>
-      <input name="Month" id="Month" size="4">
+      <input name="Month" type="text" size="4" maxlength="2"/>
       <span class="style8">2014</span>
     </td>
   </tr>
@@ -90,19 +87,19 @@
     <td width="99" height="32"><span class="style8">Customer</span></td>
     <td width="341">
       <label for='Customer'></label>
-      <input name="Customer" id="Customer" size="45"/>
+      <input name="Customer" type="text" size="45" maxlength="16"/>
     </td>
     <td><span class="style8">Phone No </span></td>
     <td>
       <label for='Phone'></label>
-      <input name="Phone" id="Phone" size="28"/>
+      <input name="Phone" type="text" size="28" maxlength="12" />
     </td>
   </tr>
   <tr>
     <td><span class="style8">Address</span></td>
     <td colspan="3">
       <label for='Address'></label>
-      <input name="Address" id="Address" size="101"/>
+      <input name="Address" type="text" size="101"maxlength=32 />
     </td>
   </tr>
   <tr>
@@ -114,11 +111,11 @@
     <td height="37">&nbsp;</td>
     <td colspan="2" rowspan="12">
       <label for='Desc'></label>
-      <textarea name="Desc" cols="60" rows="24" id="Desc"></textarea>
+      <textarea name="Desc" cols="60" rows="24" type="text"maxlength="198"></textarea>
     </td>
     <td rowspan="12">
       <label for='Cost'></label>
-      <textarea name="Cost" cols="25" rows="24" id="Cost"></textarea>
+      <textarea name="Cost" cols="25" rows="24" type="text"maxlength="64"></textarea>
     </td>
   </tr>
   <tr>
@@ -161,12 +158,86 @@
     <td>
       <label for='Total'></label>
       <span class="style8">$</span>
-      <input name="Total" type="text" id="Total"/>
+      <input name="Total" type="text" id="Total" maxlength=3 />
     </td>
   </tr>
   <tr>
-    <td colspan="4"><span class="style15">THANK YOU FOR YOUR CUSTOM </span><input type="submit" /></form></td>
+    <td colspan="4"><span class="style15">THANK YOU FOR YOUR CUSTOM </span>
+	<input type ='button' onclick='checkForm()' value='Submit' /></form></td>
   </tr>
 </table>
+<script>
+//window.onload
+var count = 0; var email = "";
+var emailError = 0; 
+alert("Javascript Initialised");
+
+function checkForm() {
+    //Local vars for Expressions
+    var alphanum = /^[\w ]+$/;
+	var chaExp = /^[A-Za-z]+$/;
+	var numExp = /^[0-9]+$/;
+	var submit = false;
+	alert("CheckForm Initialised");
+
+    // old validation fails if the input is blank
+	//&& AND, || OR, != NOT
+	if(form.Day.value == ""){
+	  //(form.Day.value == "")
+      //(form.Day.value <= 0) && (form.Day.value => 32)
+	  alert("Error: Input is empty!");
+      form.Day.focus();
+	  return false;
+	  }
+	  
+	//new minlength for all
+	var arr = new Array ('Day','Month','Customer','Phone'
+						'Address','Desc','Cost','Total');
+	var c = "init"; 
+	
+	for (var i=0,i<arr.length,i++){
+	document.getElementById(arr[i])=c;
+	if (c = ""){
+	alert("Please complete all sections of form!");
+	  return false;
+	  }
+	  }
+	
+	// check if expression is matched
+	if (re.test(form.Day.value)) {
+		count++; console.log("Validation is ");
+	 console.log (count); console.log("/8");}
+	else {
+	 alert("Error: Input contains invalid characters!");
+     form.Day.focus();
+	 return false;
+	 }
+
+    // validation was successful
+    return true;
+  }
+  
+  //NEW TODO how to refer to all elements in a form using javascript
+  //DONE needed for checking all are not empty DONE
+  //TODO remove TEST keyword find native solution
+  // 		Try == instead of .test
+  //		if no work stick with .test
+  //TODO write the other 7 or so rules for each part of form
+  // the var expression and then if conditions so 14 lines
+  var x = document.getElementById("myForm");
+var txt = "";
+var i;
+for (i = 0; i < x.length; i++) {
+    txt = txt + x.elements[i].value + "<br>";
+}
+document.getElementById("demo").innerHTML = txt;
+
+
+// USES RETURN STRUCTURE
+var submit = checkForm;
+if (submit = true){
+alert('valid form submitted');
+};
+</script>
 </body>
 </html>
