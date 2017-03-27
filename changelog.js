@@ -76,7 +76,24 @@ v11 26/3/17 All working now?
 v11 27/3/17 Quality Testing
 	On a second run script can return 8/6!!
 		Reset the count after each run
-		Minor problem as form wont submit 
+		Moved count to funct checkForm NO
+		Force Reset using == 					NO
+		Using if and == to reset				YES
+	Phone number not being checked properly
+		Try simplify numExp						NO
+		Using single = 								NO
+		Remove one bracket around arg	NO but OK
+		Removed another set of brackets NO but OK
+		Include as many brackets as wantYES
+		Using == || ==								NO
+		Using ==										NO
+		Using >= || =<								NO
+		Using == && 								YES
+		
+		
+		
+		
+		
 
 	
 		

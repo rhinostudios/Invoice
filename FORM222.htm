@@ -161,11 +161,11 @@
 </table>
 <script>
 //window.onload
-var count = 0; var email = "";
+var email = "";
 var emailError = 0; 
 var alphaNum = /^[\w 0-9]+$/;	//  /^[\w ]+$/;
 	 var chaExp = /^[A-Za-z ]+$/;
-     var numExp = /^[0-9]+$/;
+     var numExp = /[0-9]/;		//	/^[0-9]+$/;
      var submit = false;
 alert("Javascript Initialised");
 
@@ -213,6 +213,9 @@ write.innerHTML = cake;
 
 function checkForm() {       //&& AND, || OR, != NOT
 alert("CheckForm Initialised");
+	 //RESET COUNT EACH TIME
+	 var count = 0;
+	 if (count >= 0){count==0};
 	 // Array no longer needed
      var arr = new Array ("Day","Month","Customer","Phone",
                               "Address","Desc","Cost","Total");
@@ -248,7 +251,7 @@ alert("CheckForm Initialised");
      else {alert("Enter full Address!");
      f.Address.focus();}
       
-      if ((numExp.test(f.Phone.value))&&((f.Phone.length)==11||12)) {
+      if ((numExp.test(f.Phone.value))&& ((f.Phone.length)==11&&12)) {
           count++; console.log("Valid C "+count+"/6");}
      else {alert("Phone number must be 12 digits!");
      f.Phone.focus();}
