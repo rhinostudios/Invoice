@@ -166,6 +166,7 @@ var emailError = 0;
 var alphaNum = /^[\w 0-9]+$/;	//  /^[\w ]+$/;
 	 var chaExp = /^[A-Za-z ]+$/;
      var numExp = /[0-9]/;		//	/^[0-9]+$/;
+	 var numExpS = /[0-9 ]/;
      var submit = false;
 alert("Javascript Initialised");
 
@@ -216,13 +217,16 @@ alert("CheckForm Initialised");
 	 //RESET COUNT EACH TIME
 	 var count = 0;
 	 if (count >= 0){count==0};
+	 //PHONE TO STRING
+	 var f = document.getElementById("invoice");
+	 var p = f.Phone.value;
+	 var pN= p.toString();
 	 // Array no longer needed
      var arr = new Array ("Day","Month","Customer","Phone",
                               "Address","Desc","Cost","Total");
 	 //NEW BLANK CHECK FOR ALL
      var c = ""; 
 	 var errorCount = 0;
-     var f = document.getElementById("invoice");
      
      for (var i=0; i < f.length; i++){
           c = c + f.elements[i].value;	//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
@@ -251,9 +255,11 @@ alert("CheckForm Initialised");
      else {alert("Enter full Address!");
      f.Address.focus();}
       
-      if ((numExp.test(f.Phone.value))&& ((f.Phone.length)==11&&12)) {
-          count++; console.log("Valid C "+count+"/6");}
-     else {alert("Phone number must be 12 digits!");
+      if ((numExpS.test(f.Phone.value))&& ((pN.length)==11||12)) {
+          alert (f.Phone.length+"is phone length");
+		  alert (pN.length+"is pN length");
+		  count++; console.log("Valid C "+count+"/6");}
+     else {alert("Phone number must be 12 digits, use spaces if needed!");
      f.Phone.focus();}
       
       if (f.Desc.length != "") {			//ONLY MIN NEEDED

@@ -88,7 +88,22 @@ v11 27/3/17 Quality Testing
 		Using == || ==								NO
 		Using ==										NO
 		Using >= || =<								NO
-		Using == && 								YES
+		Using == && 								NO
+		Set phone number to  12 with spaces
+		Created numExpS to account for spaces 
+		Working NOW								NO
+======================================
+	V11 29/3/17 Phone NOT working
+			Set debug to find problem OK
+			Change Data type to get length? YES
+			Using toString  then compare  YES
+			Working now?			1st Run	YES
+			Deliberate too short 	2nd Run YES
+		Change to allow 11/12 digits
+			Using ==11||12							YES
+			Working with 11 and 12 digits 	YES
+			
+			
 		
 		
 		
