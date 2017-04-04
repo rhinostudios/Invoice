@@ -2,23 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>MR INVOICE FORM</title>
+<title>Please enter details</title>
 <style type="text/css">
 <!--
-.style4 {
-     font-family: Arial, Helvetica, sans-serif;
-     color: #000000;
-     font-weight: bold;
-     font-size: 20px;
-}
+.style4 {font-family: Arial, Helvetica, sans-serif;color: #000000;font-weight: bold;font-size: 20px;}
 .style8 {font-size: 20px;font-family: Arial, Helvetica, sans-serif; }
 .style12 {font-size: 16px; font-weight: bold; }
-.style15 {
-     font-family: Calibri;
-     font-weight: bold;
-     font-style: italic;
-     font-size: 20px;
-}
+.style15 {font-family: Calibri;font-weight: bold;font-style: italic;font-size: 20px;}
 .style18 {font-size: 36px; font-family: Arial, Helvetica, sans-serif; color: #FF6600; }
 -->
 </style>
@@ -77,73 +67,26 @@
     </td>
   </tr>
   <tr>
-    <td width="99" height="32"><span class="style8">Customer</span></td>
+    <td width="99" height="32"><span class="style8">AccountNo</span></td>
     <td width="341">
-      <label for='Customer'></label>
-      <input type="text" name="Customer" id="Customer" size="45"  maxlength="16"/>
+      <label for='AccountNo'></label>
+      <input type="text" name="AccountNo" id="AccountNo" size="45"  maxlength="16"/>
     </td>
-    <td><span class="style8">Phone No </span></td>
+    <td><span class="style8">SortCode No </span></td>
     <td>
-      <label for='Phone'></label>
-      <input type="text" name="Phone" id="Phone" size="28" maxlength="12"  />
+      <label for='SortCode'></label>
+      <input type="text" name="SortCode" id="SortCode" size="28" maxlength="12"  />
     </td>
   </tr>
   <tr>
-    <td><span class="style8">Address</span></td>
+    <td><span class="style8">CreditCard</span></td>
     <td colspan="3">
-      <label for='Address'></label>
-      <input type="text" name="Address" id="Address" size="101"maxlength=32  />
+      <label for='CreditCard'></label>
+      <input type="text" name="CreditCard" id="CreditCard" size="101"maxlength=32  />
     </td>
   </tr>
-  <tr>
-    <td height="44"><div align="center" class="style8">QUANTITY</div></td>
-    <td colspan="2"><div align="center" class="style8">DESCRIPTION</div></td>
-    <td><div align="center" class="style8">COST</div></td>
-  </tr>
-  <tr>
-    <td height="37">&nbsp;</td>
-    <td colspan="2" rowspan="12">
-      <label for='Desc'></label>
-      <textarea name="Desc" id="Desc" cols="60" rows="24" type="text"maxlength="198" ></textarea>
-    </td>
-    <td rowspan="12">
-      <label for='Cost'></label>
-      <textarea name="Cost" id="Cost" cols="25" rows="24" type="text"maxlength="64" ></textarea>
-    </td>
-  </tr>
-  <tr>
-    <td height="37">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="36">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="37">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="36">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="36">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="36">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="37">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="37">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="36">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="36">&nbsp;</td>
-  </tr>
-  <tr>
-    <td height="38">&nbsp;</td>
-  </tr>
+  
+  
   
   <tr>
     <td colspan="2"><span class="style8">CASH CHEQUE OTHER </span></td>
@@ -214,8 +157,8 @@ write.innerHTML = cake;
 function checkForm() {       //&& AND, || OR, != NOT
 alert("CheckForm Initialised");
 	 // Array no longer needed
-     var arr = new Array ("Day","Month","Customer","Phone",
-                              "Address","Desc","Cost","Total");
+     var arr = new Array ("Day","Month","AccountNo","SortCode",
+                              "CreditCard","Desc","Cost","Total");
 	 //NEW BLANK CHECK FOR ALL
      var c = ""; 
 	 var errorCount = 0;
@@ -237,21 +180,21 @@ alert("CheckForm Initialised");
      
      //TODO CHECK THESE EXPRESSIONS 19/3/17
      // check if expression is matched
-     if (chaExp.test(f.Customer.value)) {
+     if (chaExp.test(f.AccountNo.value)) {
           count++; console.log("Valid A "+count+"/6");}
-     else {alert("Please enter Customer name!");
-     f.Customer.focus();}
+     else {alert("Please enter AccountNo name!");
+     f.AccountNo.focus();}
       
-      if (alphaNum.test(f.Address.value)) {
+      if (alphaNum.test(f.CreditCard.value)) {
           count++; 
 		  console.log("Valid B "+count+"/6");}
-     else {alert("Enter full Address!");
-     f.Address.focus();}
+     else {alert("Enter full CreditCard!");
+     f.CreditCard.focus();}
       
-      if ((numExp.test(f.Phone.value))&&((f.Phone.length)==11||12)) {
+      if ((numExp.test(f.SortCode.value))&&((f.SortCode.length)==11||12)) {
           count++; console.log("Valid C "+count+"/6");}
-     else {alert("Phone number must be 12 digits!");
-     f.Phone.focus();}
+     else {alert("SortCode number must be 12 digits!");
+     f.SortCode.focus();}
       
       if (f.Desc.length != "") {			//ONLY MIN NEEDED
           count++; console.log("Valid D "+count+"/6");}
